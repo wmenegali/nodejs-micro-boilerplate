@@ -1,7 +1,7 @@
 import request from 'supertest';
 import { app } from '../../app';
 
-const makeRequest = async (params: any, status?: number) => request(app).post('/api/users/signup').send(params).expect(status);
+const makeRequest = async (params: any, status: number) => request(app).post('/api/users/signup').send(params).expect(status);
 
 it('returns a 201 on successful signup', async () =>
   makeRequest({
@@ -47,7 +47,7 @@ it('sets a cookie after successful signup', async () => {
   const response = await makeRequest({
     email: 'test@test.com',
     password: 'password'
-  }, 200);
+  }, 201);
 
   expect(response.get('Set-Cookie')).toBeDefined();
 });

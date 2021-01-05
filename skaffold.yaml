@@ -17,3 +17,19 @@ build:
         manual:
           - src: 'src/**/*.ts'
             dest: .
+    - image: wmenegali/client
+      context: client
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: '**/*.js'
+            dest: .
+    - image: wmenegali/tickets
+      context: tickets
+      docker:
+        dockerfile: Dockerfile
+      sync:
+        manual:
+          - src: 'src/**/*.ts'
+            dest: .
